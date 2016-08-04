@@ -22,26 +22,26 @@ namespace SkillTree_MVC5_HW.Controllers
             new AccountBookViewModels()
             {
                 Id = 1,
-                Category = "",
+                Category = CategoryEnum.支出 ,
                 Date = DateTime.Now,
                 Amount = 100,
-                Description = "Coke"
+                Description = "買飲料"
             },
             new AccountBookViewModels()
             {
                 Id = 2,
-                Category = "",
+                Category = CategoryEnum.支出 ,
                 Date = DateTime.Now,
                 Amount = 200,
-                Description = "Ice Cream"
+                Description = "吃飯"
             },
             new AccountBookViewModels()
             {
                 Id = 3,
-                Category = "",
+                Category = CategoryEnum.收入 ,
                 Date = DateTime.Now,
                 Amount = 500,
-                Description = "Pizza"
+                Description = "打工"
             }};
             return View(model);
         }
