@@ -18,15 +18,31 @@ namespace SkillTree_MVC5_HW.Controllers
         [ChildActionOnly]
         public ActionResult ChildAction()
         {
-            var model = new AccountBookViewModels
+            var model = new List<AccountBookViewModels> {
+            new AccountBookViewModels()
             {
                 Id = 1,
                 Category = "",
                 Date = DateTime.Now,
+                Amount = 100,
+                Description = "Coke"
+            },
+            new AccountBookViewModels()
+            {
+                Id = 2,
+                Category = "",
+                Date = DateTime.Now,
                 Amount = 200,
-                Description = "hello!"
-            }
-            ;
+                Description = "Ice Cream"
+            },
+            new AccountBookViewModels()
+            {
+                Id = 3,
+                Category = "",
+                Date = DateTime.Now,
+                Amount = 500,
+                Description = "Pizza"
+            }};
             return View(model);
         }
     }
