@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SkillTree_MVC5_HW.Models.ViewModels
 {
-    public class AccountBook
+    public class AccountBookViewModels
     {
         public int Id { get; set; }
         public string Category { get; set; }
