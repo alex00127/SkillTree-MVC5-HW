@@ -31,7 +31,7 @@ namespace SkillTree_MVC5_HW.Controllers
             {
                 Id = 2,
                 Category = CategoryEnum.支出 ,
-                Date = DateTime.Now,
+                Date = DateTime.Now.AddDays(2),
                 Amount = 200,
                 Description = "吃飯"
             },
@@ -39,7 +39,7 @@ namespace SkillTree_MVC5_HW.Controllers
             {
                 Id = 3,
                 Category = CategoryEnum.收入 ,
-                Date = DateTime.Now,
+                Date = DateTime.Now.AddDays(3),
                 Amount = 500,
                 Description = "打工"
             }};
