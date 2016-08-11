@@ -11,7 +11,13 @@ namespace SkillTree_MVC5_HW.Controllers
 {
     public class AccountBookController : Controller
     {
-        private readonly AccountBookService _accountBookService = new AccountBookService();
+        private readonly AccountBookService _accountBookService ;
+
+        public AccountBookController()
+        {
+            _accountBookService = new AccountBookService();
+        }
+
         // GET: AccountBook
         public ActionResult AccountBook()
         {
