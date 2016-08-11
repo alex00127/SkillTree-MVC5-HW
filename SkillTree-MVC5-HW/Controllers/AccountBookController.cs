@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using SkillTree_MVC5_HW.Models.ViewModels;
 using SkillTree_MVC5_HW.Models;
+using SkillTree_MVC5_HW.Models.Service;
 
 namespace SkillTree_MVC5_HW.Controllers
 {
     public class AccountBookController : Controller
     {
-        private Model1 db = new Model1();
+        private readonly AccountBookService _accountBookService = new AccountBookService();
         // GET: AccountBook
         public ActionResult AccountBook()
         {
@@ -20,16 +21,7 @@ namespace SkillTree_MVC5_HW.Controllers
         [ChildActionOnly]
         public ActionResult ChildAction()
         {
-            var model = db.AccountBook
-                .Select(a => new AccountBookViewModels
-                {
-                    //Id = BitConverter.ToInt32(a.Id.ToByteArray(),0),
-                    Category = a.Categoryyy == 0 ? CategoryEnum.支出 : CategoryEnum.收入,
-                    Date = a.Dateee,
-                    Amount = a.Amounttt,
-                    Description = a.Remarkkk
 
-                }).ToList();
    
             //var model = new List<AccountBookViewModels> {
             //new AccountBookViewModels()
@@ -57,7 +49,7 @@ namespace SkillTree_MVC5_HW.Controllers
                 //Amount = 500,
                 //Description = "打工"
             //}};
-            return View(model);
+            return View(_accountBookService.Lookup());
         }
     }
 }
