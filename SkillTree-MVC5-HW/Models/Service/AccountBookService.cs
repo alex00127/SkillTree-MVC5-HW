@@ -3,29 +3,44 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SkillTree_MVC5_HW.Repositories;
 
 namespace SkillTree_MVC5_HW.Models.Service
 {
-    public class AccountBookService
+    public class AccountBookService : Repository<AccountBook>
     {
-        private Model1 _db;
+        private readonly Irepository<AccountBook> _accountBookRep;
 
-        public AccountBookService()
+        public AccountBookService(IUnitOfWork unitOfWork): base(unitOfWork)
         {
-            _db = new Model1();
+            _accountBookRep = new Repository<AccountBook>(unitOfWork);
         }
-
-        public List<AccountBookViewModels> Lookup()
+        
+        public IEnumerable<AccountBookViewModels> LookUpAll()
         {
-            var model = _db.AccountBook
-                .Select(a => new AccountBookViewModels
+            var accountBooks = _accountBookRep.LookupAll();
+            var result = accountBooks.AsEnumerable()
+            .Select(a => new AccountBookViewModels()
                 {
-                    Category = a.Categoryyy == 0 ? CategoryEnum.支出 : CategoryEnum.收入,
+                    Category = a.Categoryyy == 0 ? CategoryEnum.Expand : CategoryEnum.Income,
                     Date = a.Dateee,
                     Amount = a.Amounttt,
                     Description = a.Remarkkk
                 }).ToList();
-            return model;
+            return result;
         }
+
+        //public List<AccountBookViewModels> Lookup()
+        //{
+            //var model = _db.AccountBook
+                //.Select(a => new AccountBookViewModels
+                //{
+                    //Category = a.Categoryyy == 0 ? CategoryEnum.支出 : CategoryEnum.收入,
+                    //Date = a.Dateee,
+                    //Amount = a.Amounttt,
+                    //Description = a.Remarkkk
+                //}).ToList();
+            //return model;
+        //}
     }
 }
