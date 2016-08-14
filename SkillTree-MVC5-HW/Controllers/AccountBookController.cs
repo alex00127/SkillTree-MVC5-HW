@@ -26,6 +26,17 @@ namespace SkillTree_MVC5_HW.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AccountBook([Bind(Include = "Category,Amount,Date,Description")] AccountBookViewModels accountBook)
+        {
+            
+            _accountBookService.Add(accountBook);
+            _accountBookService.Save();
+
+            return View();
+        }
+
         [ChildActionOnly]
         public ActionResult ChildAction()
         {

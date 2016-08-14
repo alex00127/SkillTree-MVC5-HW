@@ -33,5 +33,15 @@ namespace SkillTree_MVC5_HW.Repositories
         {
             return ObjectSet;
         }
+
+        public void Create(T entity)
+        {
+            ObjectSet.Add(entity);
+        }
+
+        public void Commit()
+        {
+            UnitOfWork.Save();
+        }
     }
 }

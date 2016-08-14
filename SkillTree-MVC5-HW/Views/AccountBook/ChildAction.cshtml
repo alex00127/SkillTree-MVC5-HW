@@ -13,15 +13,16 @@
                 <th>日期</th>
                 <th>金額</th>
             </tr>
-
-            @foreach (var item in Model){
+            @{int no = 0; } 
+            @foreach (var item in Model)
+            {
             <tr>
-                <td> @item.Id </td>
+                <td> @(no++) </td>
                 <td> @item.Category </td>
                 <td> @item.Date.ToShortDateString() </td>
                 <td> @item.Amount </td>
             </tr>
-            } 
+            }
         </table>
     </div>
 </div>
