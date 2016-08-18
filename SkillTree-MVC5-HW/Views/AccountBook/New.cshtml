@@ -1,0 +1,10 @@
+﻿@model SkillTree_MVC5_HW.Models.ViewModels.AccountBookViewModels
+@{
+    Layout = null;
+}
+
+@*想單獨更新一筆資料的畫面就好，但不知道要怎麼insert到list內的正確位置(因為資料有照時間排序)，
+    所以只好整個list的畫面都更新掉...*@
+@Html.Action("AccountBookList")
+
+

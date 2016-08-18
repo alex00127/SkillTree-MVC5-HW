@@ -28,17 +28,19 @@ namespace SkillTree_MVC5_HW.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AccountBook([Bind(Include = "Category,Amount,Date,Description")] AccountBookViewModels accountBook)
+        public ActionResult New([Bind(Include = "Category,Amount,Date,Description")] AccountBookViewModels accountBook)
         {
             
             _accountBookService.Add(accountBook);
             _accountBookService.Save();
 
-            return View();
+            System.Threading.Thread.Sleep(5000);
+            //ViewData["record"] = accountBook;
+            return View(accountBook);
         }
 
         [ChildActionOnly]
-        public ActionResult ChildAction()
+        public ActionResult AccountBookList()
         {
 
 

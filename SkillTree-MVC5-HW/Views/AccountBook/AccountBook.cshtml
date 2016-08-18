@@ -4,7 +4,14 @@
     ViewBag.Title = "AccountBook";
 }
 
-@using (Html.BeginForm()) 
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    UpdateTargetId = "list",
+    LoadingElementId = "loading",
+    LoadingElementDuration = 2000,
+
+    Url = Url.Action("New")
+}))
 {
     @Html.AntiForgeryToken()
 
@@ -48,8 +55,22 @@
     </div>
 }
 
-@Html.Action("ChildAction")
+
+<div id="loading" style="display:none;">
+    loading....
+</div>
+
+<div id="list">
+    @Html.Action("AccountBookList")
+</div>
+
+
+
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryajax")
 }

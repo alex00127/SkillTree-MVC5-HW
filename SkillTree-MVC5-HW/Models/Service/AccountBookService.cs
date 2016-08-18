@@ -27,7 +27,7 @@ namespace SkillTree_MVC5_HW.Models.Service
                     Date = a.Dateee,
                     Amount = a.Amounttt,
                     Description = a.Remarkkk
-                }).OrderByDescending(a=>a.Date).ToList();
+                }).OrderByDescending(a=>a.Date).Take(10).ToList();
             return result;
         }
 
