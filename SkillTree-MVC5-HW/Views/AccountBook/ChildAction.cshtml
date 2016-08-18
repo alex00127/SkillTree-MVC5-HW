@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SkillTree_MVC5_HW.Models.ViewModels.AccountBookViewModels>  
+@using SkillTree_MVC5_HW.ExtensionHelper;
 
 @{
     @(Layout = "")
@@ -18,7 +19,7 @@
             {
             <tr>
                 <td> @(no++) </td>
-                <td> @item.Category </td>
+                <td> @Html.SetColorByCategory(item.Category) </td>
                 <td> @item.Date.ToShortDateString() </td>
                 <td> @item.Amount </td>
             </tr>
